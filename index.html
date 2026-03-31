@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>StreamLineIQ Consulting</title>
+<meta name="description" content="StreamLineIQ Consulting helps small and medium-sized businesses across the US streamline operations, accelerate growth, and build lasting competitive advantage."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563A8'/><rect x='6' y='9' width='20' height='3' rx='1.5' fill='%23ffffff'/><rect x='6' y='15' width='13' height='3' rx='1.5' fill='%237EC8E3'/><rect x='6' y='21' width='16' height='3' rx='1.5' fill='%23ffffff' opacity='0.6'/><polyline points='19,20 23,14 27,17' fill='none' stroke='%237EC8E3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"/>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --blue:#2563A8;--blue-dark:#1a4a80;--blue-light:#EBF3FB;
+  --steel:#4A90C4;--white:#ffffff;--gray:#f4f7fb;
+  --text:#1a2340;--muted:#5a6a80;--border:#d0e0ef;
+}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--white);}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:var(--white);border-bottom:1px solid var(--border);z-index:100;padding:0 5%;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.logo-link{display:flex;align-items:center;}
+.nav-links{display:flex;gap:2rem;font-size:.93rem;font-weight:500;color:var(--muted);}
+.nav-links a{cursor:pointer;transition:color .2s;}
+.nav-links a:hover{color:var(--blue);}
+.nav-cta{background:var(--blue);color:#fff;padding:.5rem 1.3rem;border-radius:6px;font-size:.9rem;font-weight:600;transition:background .2s;}
+.nav-cta:hover{background:var(--blue-dark);}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;width:100%;background:var(--white);border-bottom:1px solid var(--border);padding:1rem 5%;z-index:99;}
+.mobile-menu a{display:block;padding:.7rem 0;font-size:1rem;font-weight:500;color:var(--muted);border-bottom:1px solid var(--border);}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu.open{display:block;}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,#1a2f5a 0%,#2563A8 60%,#4A90C4 100%);display:flex;align-items:center;padding:100px 5% 60px;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-text h1{font-size:3rem;font-weight:900;color:#fff;line-height:1.15;margin-bottom:1rem;}
+.hero-text h1 span{color:#7EC8E3;}
+.hero-slogan{font-size:1.15rem;color:#b8d4ee;margin-bottom:.8rem;font-style:italic;letter-spacing:.02em;}
+.hero-text p{font-size:1.05rem;color:#cde0f5;line-height:1.7;margin-bottom:2rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:#fff;color:var(--blue);padding:.75rem 1.8rem;border-radius:7px;font-weight:700;font-size:1rem;transition:all .2s;display:inline-block;}
+.btn-primary:hover{background:var(--blue-light);transform:translateY(-2px);}
+.btn-outline{border:2px solid #fff;color:#fff;padding:.75rem 1.8rem;border-radius:7px;font-weight:600;font-size:1rem;transition:all .2s;display:inline-block;}
+.btn-outline:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+.hero-badges{display:flex;flex-direction:column;gap:1rem;}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:1.2rem 1.5rem;color:#fff;backdrop-filter:blur(8px);}
+.badge-icon{font-size:1.8rem;margin-bottom:.4rem;}
+.badge h3{font-size:.95rem;font-weight:700;margin-bottom:.2rem;}
+.badge p{font-size:.82rem;color:#b8d4ee;}
+
+/* SECTIONS */
+section{padding:80px 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:.8rem;font-weight:700;color:var(--steel);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;}
+.section-title{font-size:2rem;font-weight:800;color:var(--text);margin-bottom:1rem;}
+.section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.7;}
+
+/* ABOUT */
+.about{background:var(--gray);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:2.5rem;}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:.97rem;}
+.lang-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem;}
+.lang-pill{background:var(--blue);color:#fff;padding:.35rem .9rem;border-radius:20px;font-size:.82rem;font-weight:600;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;box-shadow:0 2px 8px rgba(37,99,168,.07);}
+.stat-card .num{font-size:2rem;font-weight:900;color:var(--blue);}
+.stat-card .lbl{font-size:.82rem;color:var(--muted);margin-top:.2rem;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.6rem;box-shadow:0 2px 10px rgba(37,99,168,.06);transition:all .25s;cursor:pointer;}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(37,99,168,.13);border-color:var(--steel);}
+.svc-icon{font-size:2rem;margin-bottom:.8rem;}
+.svc-card h3{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:.5rem;}
+.svc-card .svc-desc{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;}
+.svc-items{display:none;list-style:none;margin-top:.5rem;}
+.svc-card.open .svc-items{display:block;}
+.svc-items li{font-size:.8rem;color:var(--muted);padding:.25rem 0;border-top:1px solid var(--border);display:flex;align-items:flex-start;gap:.4rem;}
+.svc-items li::before{content:"›";color:var(--steel);font-weight:700;flex-shrink:0;}
+.svc-toggle{font-size:.78rem;color:var(--steel);font-weight:700;margin-top:.5rem;display:inline-block;}
+
+/* WHY US */
+.whyus{background:var(--gray);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem;}
+.why-card{background:var(--white);border-radius:12px;padding:1.5rem;border:1px solid var(--border);text-align:center;}
+.why-card .wi{font-size:2rem;margin-bottom:.7rem;}
+.why-card h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.why-card p{font-size:.8rem;color:var(--muted);line-height:1.6;}
+
+/* CTA */
+.cta-banner{background:linear-gradient(135deg,#1a2f5a,#2563A8);padding:70px 5%;}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center;}
+.cta-inner h2{font-size:2rem;font-weight:900;color:#fff;margin-bottom:.8rem;}
+.cta-inner p{color:#b8d4ee;font-size:1rem;margin-bottom:2rem;line-height:1.7;}
+
+/* BOOKING */
+.booking{background:var(--white);}
+.calendly-wrapper{margin-top:2.5rem;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+
+/* CONTACT */
+.contact{background:var(--gray);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start;}
+.contact-info p{color:var(--muted);line-height:1.8;margin-bottom:1.5rem;}
+.contact-detail{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem;font-size:.93rem;color:var(--muted);}
+.contact-detail .ci{font-size:1.2rem;}
+.contact-book-label{font-size:.95rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;}
+.contact-calendly .calendly-inline-widget{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+
+/* FOOTER */
+footer{background:#1a2340;padding:2rem 5%;text-align:center;}
+footer p{color:#7a90aa;font-size:.83rem;}
+footer span{color:var(--steel);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .hero-text h1{font-size:2.1rem;}
+  .hero-badges{flex-direction:row;flex-wrap:wrap;}
+}
+@media(max-width:600px){
+  .services-grid,.why-grid{grid-template-columns:1fr;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo-link">
+      <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="4" width="32" height="32" rx="5" fill="#2563A8"/>
+        <rect x="6" y="11" width="20" height="3" rx="1.5" fill="#ffffff"/>
+        <rect x="6" y="18" width="14" height="3" rx="1.5" fill="#7EC8E3"/>
+        <rect x="6" y="25" width="17" height="3" rx="1.5" fill="#ffffff" opacity="0.6"/>
+        <polyline points="20,24 24,18 28,21" fill="none" stroke="#7EC8E3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="40" y="26" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="700" fill="#1a2340">Stream<tspan fill="#2563A8">Line</tspan><tspan fill="#4A90C4">IQ</tspan></text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#booking">Book a Call</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#booking" class="nav-cta">Book a Call</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"    onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#why"      onclick="toggleMenu()">Why Us</a>
+  <a href="#booking"  onclick="toggleMenu()">Book a Call</a>
+  <a href="#contact"  onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-slogan">Intelligence for Better Business Performance</p>
+      <h1>Smarter Operations.<br><span>Stronger Results.</span></h1>
+      <p>StreamLineIQ Consulting helps small and medium-sized businesses across the United States streamline operations, accelerate growth, and build lasting competitive advantage.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Our Services</a>
+        <a href="#booking"  class="btn-outline">Book a Free Consultation</a>
+      </div>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><div class="badge-icon">🌎</div><h3>US-Wide Coverage</h3><p>Serving SMBs across all 50 states</p></div>
+      <div class="badge"><div class="badge-icon">🗣️</div><h3>Multilingual Team</h3><p>English · German · Spanish · Portuguese</p></div>
+      <div class="badge"><div class="badge-icon">📊</div><h3>6 Service Pillars</h3><p>From strategy to digital transformation</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-title">Your Full-Service Business Partner</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>StreamLineIQ Consulting is a business consulting firm dedicated to helping small and medium-sized enterprises across the United States reach their full potential. We combine deep operational expertise with strategic insight to deliver measurable results.</p>
+        <p>Rooted in German and Spanish business cultures, our team brings a global perspective to every engagement — enabling us to serve diverse clients and markets with precision and cultural intelligence.</p>
+        <p>Whether you need to optimize your processes, scale your business, transform your finances, or lead organizational change, we are your one-stop consulting partner.</p>
+        <div class="lang-row">
+          <span class="lang-pill">🇺🇸 English</span>
+          <span class="lang-pill">🇩🇪 German</span>
+          <span class="lang-pill">🇪🇸 Spanish</span>
+          <span class="lang-pill">🇧🇷 Portuguese</span>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card"><div class="num">50</div><div class="lbl">States Covered</div></div>
+        <div class="stat-card"><div class="num">6</div><div class="lbl">Service Pillars</div></div>
+        <div class="stat-card"><div class="num">4</div><div class="lbl">Languages</div></div>
+        <div class="stat-card"><div class="num">SMB</div><div class="lbl">Focused Expertise</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our Service Pillars</h2>
+    <p class="section-sub">From big-picture strategy to day-to-day operations, we cover every dimension of your business. Click any pillar to explore the full scope.</p>
+    <div class="services-grid">
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-icon">🎯</div>
+        <h3>Strategy & Growth Consulting</h3>
+        <div class="svc-desc">Build a clear roadmap for sustainable growth and competitive positioning.</div>
+        <span class="svc-toggle">+ View Services</span>
+        <ul class="svc-items">
+          <li>Strategy Development</li><li>Market Entry Strategy</li><li>Competitive Analysis</li>
+          <li>Pricing Strategy</li><li>Product Portfolio Strategy</li><li>Turnaround & Restructure Strategy</li>
+          <li>Strategic Planning</li><li>Traction Coaching – Get a Grip on Your Business</li>
+        </ul>
+      </div>
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-icon">⚙️</div>
+        <h3>Operations & Process Improvement</h3>
+        <div class="svc-desc">Eliminate waste, reduce costs, and build efficient scalable processes.</div>
+        <span class="svc-toggle">+ View Services</span>
+        <ul class="svc-items">
+          <li>Process Mapping & Redesign</li><li>Cost Reduction Programs</li><li>Lean & Six Sigma Implementation</li>
+          <li>Supply Chain Optimization</li><li>Manufacturing Productivity Improvements</li>
+          <li>KPIs & Performance Management Systems</li><li>Service Process Improvement</li>
+        </ul>
+      </div>
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-icon">💼</div>
+        <h3>Financial Advisory, Accounting & Performance</h3>
+        <div class="svc-desc">Full-spectrum financial services from daily bookkeeping to strategic advisory.</div>
+        <span class="svc-toggle">+ View Services</span>
+        <ul class="svc-items">
+          <li>Financial Modeling</li><li>Profitability & Cost Structure Analysis</li><li>Business Valuation</li>
+          <li>Cash Flow Improvements</li><li>Budgeting & Forecasting</li><li>Accounting Services</li>
+          <li>Bookkeeping & Day-to-Day Financial Management</li>
+          <li>Financial Reporting (P&L, Balance Sheet, Cash Flow)</li>
+          <li>Tax Services (Business, Personal, Payroll, Sales Tax)</li><li>Payroll Services & Compliance</li>
+        </ul>
+      </div>
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-icon">📈</div>
+        <h3>Sales & Marketing Consulting</h3>
+        <div class="svc-desc">Drive revenue growth through smarter sales structures and marketing strategies.</div>
+        <span class="svc-toggle">+ View Services</span>
+        <ul class="svc-items">
+          <li>Sales Strategy & Territory Planning</li><li>Sales Organization Design</li>
+          <li>Channel Strategy (Dealers & Distributors)</li><li>CRM Implementation</li>
+          <li>Pricing Strategy</li><li>Customer Experience Optimization</li><li>Lead Generation Strategy</li>
+        </ul>
+      </div>
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-icon">🏛️</div>
+        <h3>Organizational & Leadership Consulting</h3>
+        <div class="svc-desc">Build high-performing teams and resilient organizational structures.</div>
+        <span class="svc-toggle">+ View Services</span>
+        <ul class="svc-items">
+          <li>Organization Structure Design</li><li>Change Management</li><li>Talent Strategy</li>
+          <li>Compensation Benchmarking</li><li>Culture Transformation</li>
+        </ul>
+      </div>
+      <div class="svc-card" onclick="toggleSvc(this)">
+        <div class="svc-icon">🤖</div>
+        <h3>Technology & Digital Transformation</h3>
+        <div class="svc-desc">Modernize your business with the right technology, tools, and automation.</div>
+        <span class="svc-toggle">+ View Services</span>
+        <ul class="svc-items">
+          <li>ERP System Implementation</li><li>CRM System Implementation</li>
+          <li>AI & Automation Integration</li><li>Power Platform Consulting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="whyus">
+  <div class="section-inner">
+    <div class="section-label">Why StreamLineIQ</div>
+    <h2 class="section-title">The Difference We Bring</h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="wi">🎯</div><h4>SMB-Focused</h4><p>Our methodologies are built specifically for small and medium-sized businesses — not scaled-down enterprise models.</p></div>
+      <div class="why-card"><div class="wi">🌐</div><h4>Multilingual Reach</h4><p>We serve clients in English, German, Spanish, and Portuguese — bridging language and cultural gaps seamlessly.</p></div>
+      <div class="why-card"><div class="wi">🔗</div><h4>End-to-End Coverage</h4><p>From strategy to execution, finance to technology — one partner for every business challenge.</p></div>
+      <div class="why-card"><div class="wi">📍</div><h4>Nationwide Presence</h4><p>Available to businesses across all 50 US states, with the flexibility to work on-site or remotely.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to Streamline Your Business?</h2>
+    <p>Let's talk about where your business is today and where you want it to be. No pressure — just clarity.</p>
+    <a href="#booking" class="btn-primary">Schedule a Free Consultation</a>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="booking">
+  <div class="section-inner">
+    <div class="section-label">Book a Consultation</div>
+    <h2 class="section-title">Schedule Time With Us</h2>
+    <p class="section-sub">Pick a date and time that works for you. Our first consultation is complimentary — we'll learn about your business and explore how we can help.</p>
+    <div class="calendly-wrapper">
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/streamlineiq-consulting/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=2563a8"
+           style="min-width:320px;height:700px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's Start the Conversation</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Whether you're ready to start a project or just exploring your options, we'd love to hear from you. Our team responds within one business day.</p>
+        <div class="contact-detail"><span class="ci">📧</span> info@streamlineiq-consulting.com</div>
+        <div class="contact-detail"><span class="ci">📞</span> +1 646 647 9901</div>
+        <div class="contact-detail"><span class="ci">📞</span> +1 646 852 8459</div>
+        <div class="contact-detail"><span class="ci">📍</span> Serving all 50 US States</div>
+        <div class="contact-detail"><span class="ci">🌐</span> English · German · Spanish · Portuguese</div>
+        <div style="margin-top:1.5rem;">
+          <a href="#booking" class="btn-primary">📅 Book an Appointment</a>
+        </div>
+      </div>
+      <div class="contact-calendly">
+        <p class="contact-book-label">📅 Pick a time that works for you — our first consultation is completely free.</p>
+        <div class="calendly-inline-widget"
+             data-url="https://calendly.com/streamlineiq-consulting/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=2563a8"
+             style="min-width:320px;height:660px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>StreamLineIQ Consulting</span>. All rights reserved. · <em>Intelligence for Better Business Performance</em></p>
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function toggleSvc(card){
+  var isOpen=card.classList.contains('open');
+  document.querySelectorAll('.svc-card').forEach(function(c){
+    c.classList.remove('open');
+    c.querySelector('.svc-toggle').textContent='+ View Services';
+  });
+  if(!isOpen){
+    card.classList.add('open');
+    card.querySelector('.svc-toggle').textContent='− Hide Services';
+  }
+}
+</script>
+</body>
+</html>
