@@ -4,7 +4,121 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>StreamLineIQ Consulting</title>
-<link rel="stylesheet" href="styles.css"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --blue:#2563A8;--blue-dark:#1a4a80;--blue-light:#EBF3FB;
+    --steel:#4A90C4;--white:#ffffff;--gray:#f4f7fb;
+    --text:#1a2340;--muted:#5a6a80;--border:#d0e0ef;
+  }
+  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--white);}
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:var(--white);border-bottom:1px solid var(--border);z-index:100;padding:0 5%;}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .logo{font-size:1.35rem;font-weight:800;color:var(--blue);}
+  .logo span{color:var(--text);}
+  .nav-links{display:flex;gap:2rem;font-size:.93rem;font-weight:500;color:var(--muted);}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-cta{background:var(--blue);color:#fff;padding:.5rem 1.3rem;border-radius:6px;font-size:.9rem;font-weight:600;transition:background .2s;}
+  .nav-cta:hover{background:var(--blue-dark);}
+
+  /* HERO */
+  .hero{min-height:100vh;background:linear-gradient(135deg,#1a2f5a 0%,#2563A8 60%,#4A90C4 100%);display:flex;align-items:center;padding:100px 5% 60px;}
+  .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .hero-text h1{font-size:3rem;font-weight:900;color:#fff;line-height:1.15;margin-bottom:1rem;}
+  .hero-text h1 span{color:#7EC8E3;}
+  .hero-slogan{font-size:1.15rem;color:#b8d4ee;margin-bottom:.8rem;font-style:italic;letter-spacing:.02em;}
+  .hero-text p{font-size:1.05rem;color:#cde0f5;line-height:1.7;margin-bottom:2rem;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-primary{background:#fff;color:var(--blue);padding:.75rem 1.8rem;border-radius:7px;font-weight:700;font-size:1rem;transition:all .2s;}
+  .btn-primary:hover{background:var(--blue-light);transform:translateY(-2px);}
+  .btn-outline{border:2px solid #fff;color:#fff;padding:.75rem 1.8rem;border-radius:7px;font-weight:600;font-size:1rem;transition:all .2s;}
+  .btn-outline:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+  .hero-badges{display:flex;flex-direction:column;gap:1rem;}
+  .badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:1.2rem 1.5rem;color:#fff;backdrop-filter:blur(8px);}
+  .badge-icon{font-size:1.8rem;margin-bottom:.4rem;}
+  .badge h3{font-size:.95rem;font-weight:700;margin-bottom:.2rem;}
+  .badge p{font-size:.82rem;color:#b8d4ee;}
+
+  /* SECTION BASE */
+  section{padding:80px 5%;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-label{font-size:.8rem;font-weight:700;color:var(--steel);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;}
+  .section-title{font-size:2rem;font-weight:800;color:var(--text);margin-bottom:1rem;}
+  .section-sub{font-size:1rem;color:var(--muted);max-width:600px;line-height:1.7;}
+
+  /* ABOUT */
+  .about{background:var(--gray);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:2.5rem;}
+  .about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:.97rem;}
+  .lang-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem;}
+  .lang-pill{background:var(--blue);color:#fff;padding:.35rem .9rem;border-radius:20px;font-size:.82rem;font-weight:600;}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+  .stat-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;box-shadow:0 2px 8px rgba(37,99,168,.07);}
+  .stat-card .num{font-size:2rem;font-weight:900;color:var(--blue);}
+  .stat-card .lbl{font-size:.82rem;color:var(--muted);margin-top:.2rem;}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+  .svc-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.6rem;box-shadow:0 2px 10px rgba(37,99,168,.06);transition:all .25s;cursor:pointer;}
+  .svc-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(37,99,168,.13);border-color:var(--steel);}
+  .svc-icon{font-size:2rem;margin-bottom:.8rem;}
+  .svc-card h3{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:.5rem;}
+  .svc-card .svc-desc{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;}
+  .svc-items{display:none;list-style:none;margin-top:.5rem;}
+  .svc-card.open .svc-items{display:block;}
+  .svc-items li{font-size:.8rem;color:var(--muted);padding:.25rem 0;border-top:1px solid var(--border);display:flex;align-items:flex-start;gap:.4rem;}
+  .svc-items li::before{content:"›";color:var(--steel);font-weight:700;flex-shrink:0;}
+  .svc-toggle{font-size:.78rem;color:var(--steel);font-weight:700;margin-top:.5rem;display:inline-block;}
+
+  /* WHY US */
+  .whyus{background:var(--gray);}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem;}
+  .why-card{background:var(--white);border-radius:12px;padding:1.5rem;border:1px solid var(--border);text-align:center;}
+  .why-card .wi{font-size:2rem;margin-bottom:.7rem;}
+  .why-card h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+  .why-card p{font-size:.8rem;color:var(--muted);line-height:1.6;}
+
+  /* CTA BANNER */
+  .cta-banner{background:linear-gradient(135deg,#1a2f5a,#2563A8);padding:70px 5%;}
+  .cta-inner{max-width:700px;margin:0 auto;text-align:center;}
+  .cta-inner h2{font-size:2rem;font-weight:900;color:#fff;margin-bottom:.8rem;}
+  .cta-inner p{color:#b8d4ee;font-size:1rem;margin-bottom:2rem;line-height:1.7;}
+  .cta-inner .btn-primary{font-size:1rem;padding:.85rem 2.2rem;}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start;}
+  .contact-info p{color:var(--muted);line-height:1.8;margin-bottom:1.5rem;}
+  .contact-detail{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem;font-size:.93rem;color:var(--muted);}
+  .contact-detail .ci{font-size:1.2rem;}
+  .contact-form{background:var(--gray);border-radius:14px;padding:2rem;border:1px solid var(--border);}
+  .form-row{margin-bottom:1rem;}
+  .form-row label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
+  .form-row input,.form-row select,.form-row textarea{width:100%;padding:.65rem .9rem;border:1px solid var(--border);border-radius:7px;font-size:.9rem;color:var(--text);background:#fff;outline:none;transition:border .2s;}
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--steel);}
+  .form-row textarea{height:90px;resize:vertical;}
+  .form-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:.8rem;border-radius:7px;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s;}
+  .form-btn:hover{background:var(--blue-dark);}
+
+  /* FOOTER */
+  footer{background:#1a2340;padding:2rem 5%;text-align:center;}
+  footer p{color:#7a90aa;font-size:.83rem;}
+  footer span{color:var(--steel);}
+
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .hero-text h1{font-size:2.1rem;}
+    .hero-badges{flex-direction:row;flex-wrap:wrap;}
+  }
+  @media(max-width:600px){
+    .services-grid,.why-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
 </head>
 <body>
 
@@ -228,7 +342,7 @@
           </select>
         </div>
         <div class="form-row"><label>Message</label><textarea placeholder="Tell us a bit about your business and what you're looking for..."></textarea></div>
-        <button class="form-btn" id="contactBtn">Send Message</button>
+        <button class="form-btn">Send Message</button>
       </div>
     </div>
   </div>
@@ -239,6 +353,27 @@
   <p>© 2025 <span>StreamLineIQ Consulting</span>. All rights reserved. · <em>Intelligence for Better Business Performance</em></p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  function toggleSvc(card){
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.svc-card').forEach(c=>{
+      c.classList.remove('open');
+      c.querySelector('.svc-toggle').textContent='+ View Services';
+    });
+    if(!isOpen){
+      card.classList.add('open');
+      card.querySelector('.svc-toggle').textContent='− Hide Services';
+    }
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
 </body>
 </html>
